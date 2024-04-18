@@ -1,0 +1,41 @@
+{% extends 'template.html' %}
+
+{% block title %}Bare - Income And Expense Tracker {% endblock title %}
+
+{% block content %}
+<!-- ## DO NOT EDIT ABOVE -->
+
+<h1 class="text-center">Income Form</h1>
+<hr>
+<div class="form-container"> 
+    <form action="{{ url_for('income') }}" method="POST">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label class="form-label label_style" for="memberName">Household Member:</label>
+        <select class="form-control" id="memberName" name="memberName" required>
+            <option value="" disabled selected hidden>Select a member</option>
+            {% for member in members %}
+            <option value="{{ member }}">{{ member }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label class="form-label label_style" for="Income_category">Income Category:</label>
+        <select class="form-control" id="Income_category" name="Income_category" required>
+            <option value="" disabled selected hidden>Select an option</option>
+            <option value="Salary, stipends and pension">Salary, stipends and pension</option>
+            <option value="Study loans">Study loans</option>
+            <option value="Investment income">Investment income</option>
+            <option value="Other income">Other income</option>
+        </select><br><br>
+
+        <label class="form-label label_style" for="Income_description">Description:</label>
+        <input class="form-control" type="text" id="Income_description" name="Income_description" required><br><br>
+
+        <label class="form-label label_style" for="Income_amount">Amount:</label>
+        <input class="form-control" type="number" id="Income_amount" name="Income_amount" step="0.01" required><br><br>
+        <input class="form-control btn button-primary submit-button" type="submit" value="Submit">
+    </form>
+ </div>
+<!-- ## DO NOT EDIT BELOW-->
+{% endblock content %}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{% block title %}Bare - Income and Expense Tracker{% endblock title %}</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='css/personal.css')}}">
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url_for('index') }}">Income & Expense Tracker</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ url_for('income') }}">Add income</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('expense') }}">Add expense</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="{{ url_for('overview') }}">Overview</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container">
+            
+            <div class="myBody"> 
+            {% block content %}
+        
+            <!-- ## DO NOT EDIT ABOVE -->
+            
+            
+
+
+
+
+
+
+
+            <!-- ## DO NOT EDIT BELOW-->
+            {% endblock content %}
+            </div>
+            <footer>
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li>Email: <a href="mailto:Tommy.elvebu@gmail.com">Tommy.elvebu@gmail.com</a></li>
+                            <li>Phone: <a href="tel:+47 405 22 084">+47 405 22 084</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Tommy Elvebu | Website designed by Tommy Elvebu</p>
+                </div>
+            </footer>
+              
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

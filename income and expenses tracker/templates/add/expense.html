@@ -1,0 +1,51 @@
+{% extends 'template.html' %}
+
+{% block title %}Bare - Income And Expense Tracker {% endblock title %}
+
+{% block content %}
+<!-- ## DO NOT EDIT ABOVE -->
+
+<h1 class="text-center">Expense Form</h1>
+<hr>
+<div class="form-container"> 
+    <form action="{{ url_for('expense') }}" method="POST">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label class="form-label label_style" for="memberName">Member Name:</label>
+        <select class="form-control" id="memberName" name="memberName" required>
+            <option value="" disabled selected hidden>Select a member</option>
+            {% for member in members %}
+            <option value="{{ member }}">{{ member }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label class="form-label label_style" for="Expense_category">Category:</label>
+        <select class="form-control" id="Expense_category" name="Expense_category" required>
+            <option value="" disabled selected hidden>Select an option</option>
+            <option value="Housing">Housing</option>
+            <option value="Food and groceries">Food and groceries</option>
+            <option value="Car and transportation">Car and transportation</option>
+            <option value="Clothing and personal upkeep">Clothing and personal upkeep</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Childcare">Childcare</option>
+            <option value="Travel">Travel</option>
+            <option value="Entertainment and leisure">Entertainment and leisure</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Memberships and subscriptions">Memberships and subscriptions</option>
+            <option value="Savings and investments">Savings and investments</option>
+            <option value="Other insurance">Other insurance</option>
+            <option value="Other debts">Other debts</option>
+            <option value="Other expenses">Other expenses</option>
+        </select><br><br>
+
+        <label class="form-label label_style" for="Expense_description">Description:</label>
+        <input class="form-control" type="text" id="Expense_description" name="Expense_description" required><br><br>
+
+        <label class="form-label label_style" for="Expense_amount">Amount:</label>
+        <input class="form-control" type="number" id="Expense_amount" name="Expense_amount" step="0.01" placeholder="{{ amount }}" required><br><br>
+
+        <input class="form-control btn button-primary submit-button" type="submit" value="Submit">
+    </form>
+ </div>
+<!-- ## DO NOT EDIT BELOW-->
+{% endblock content %}

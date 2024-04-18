@@ -1,0 +1,83 @@
+{% extends 'template.html' %}
+        {% block title %}Bare - Income And Expense Tracker{% endblock title %}
+        
+       
+            {% block content %}
+        
+            <!-- ## DO NOT EDIT ABOVE -->
+            
+            
+            <div class="center-container">
+                <form action="{{ url_for('overview') }}" method="get" class="month-selector">
+                    <select name="month" class="form-control" required>
+                        {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+                        {% for m in range(1, 13) %}
+                        <option value="{{ m }}" {% if m == month|int %}selected{% endif %}>{{ months[m-1] }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="year" class="form-control" required>
+                        {% for y in range(2022, 2030) %}
+                        <option value="{{ y }}" {% if y == year|int %}selected{% endif %}>{{ y }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" class="btn button-primary submit-button overview-submit-button" value="Show">
+                </form>
+            </div>
+            <div class="center-container">       
+            <h2>Transactions for {{ months[month|int - 1] }}/{{ year }}</h2>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Member Name</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                    <tr class="{{ 'table-danger' if record.Amount < 0 else 'table-success' }}">
+                        <td>{{ record.Date }}</td>
+                        <td>{{ record.MemberName }}</td>
+                        <td>{{ record.Category }}</td>
+                        <td>{{ record.Description }}</td>
+                        <td>{{ record.Amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+
+            <div class="center-container">        
+                <h2>Summary by Category</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Category</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in summary %}
+                    <tr class="{{ 'table-info' if item.Type == 'Income' else 'table-warning' }}">
+                        <td>{{ item.Type }}</td>
+                        <td>{{ item.Category }}</td>
+                        <td>{{ item.Total }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>    
+            
+
+
+            <!-- ## DO NOT EDIT BELOW-->
+
+            {% endblock content %}
